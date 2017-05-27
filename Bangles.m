@@ -1,0 +1,9 @@
+function [thetaB,phiB] = Bangles(theta,phi,B)
+B = B/norm(B);
+phirot = atan2d(B(1),B(2));
+thetaB = acosd(B(1)*sind(theta).*cosd(phi)+...
+    B(2)*sind(theta).*sind(phi)+B(3)*cosd(theta));
+phiB = atan2d(B(3)*(cosd(phi)*sind(phirot)-sind(phi)*cosd(phirot))+...
+    cotd(theta)*(B(1)*sind(phirot)-B(2)*cosd(phirot)),...
+    cosd(phirot)*cosd(phi)+sind(phirot)*sind(phi));
+phiB(phiB~=phiB)=0;
